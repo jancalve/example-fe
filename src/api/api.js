@@ -5,7 +5,7 @@ const instance = axios.create({baseURL: 'http://localhost:8080'})
 
 
 export function createAgreement (firstName, lastName, email, bonus, socialSecurityNumber, vehicleNumber) {
-    return instance.post('/agreement', {
+     return instance.post('/agreement', {
         'email': email,
         'bonus': bonus,
         'firstName':firstName,

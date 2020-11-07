@@ -1,23 +1,13 @@
 import React from "react";
-import { makeStyles } from '@material-ui/core/styles';
-import { Formik, Field, ErrorMessage } from "formik";
+import { Field, ErrorMessage } from "formik";
 
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        '& > *': {
-            margin: theme.spacing(1),
-            width: '25ch',
-        },
-    },
-}));
 
 export default function Text(props) {
-    const classes = useStyles();
 
     return (
-        <div className='form-item'>
-            <div>
+        <div className="form-item">
+            <div className="form-item-header">
                 {props.fieldHeader}
             </div>
             <Field

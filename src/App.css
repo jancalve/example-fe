@@ -1,52 +1,101 @@
+@font-face {
+  font-family: 'MuseoSans';
+  src: local('MuseoSans-500'), url(./fonts/MuseoSans-500.otf) format('opentype');
+}
+
+body {
+  font-family: 'MuseoSans', cursive;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+
+.form-header {
+  color: darkblue;
+  padding-left: 20px;
+  width: 500px;
+
 }
 
 .error {
   color: red;
 }
 
+.form-root {
+  padding-left: 100px;
+}
+
 .form-item {
-  flex-direction: row;
+  color: darkblue;
+  font-weight: bold;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-right: 20px;
+}
+
+
+input {
+  height: 44px;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+}
+
+select {
+  height: 44px;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+}
+
+.form-item-header {
+  padding-bottom: 8px;
 }
 
 .form-content {
   padding-left: 20px;
 }
 
-.form-root {
-  padding: 20px;
-  margin-left:auto;
-  margin-right:auto;
+.btn-container {
+  padding-top: 60px;
 }
 
-.form-header {
-  color: #61dafb;
-  padding-left: 20px;
-  width: 300px;
+.btn-submit {
+  font-weight: bold;
+  border-radius: 4px;
+  background-color: darkblue;
+  border: none;
+  text-align: center;
+  height: 44px;
+  width: 100px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  color: white !important; // :)
+
 }
+
+.btn-reset {
+  font-weight: bold;
+  border-radius: 4px;
+  background-color: white;
+  color: darkblue;
+  border: 1px solid darkgrey;
+  text-align: center;
+  height: 44px;
+  width: 100px;
+  text-decoration: none;
+
+}
+
+table, th, td {
+  text-align: left;
+}
+
+
 
 
 

@@ -1,46 +1,28 @@
-
-import Header from "./header/Header";
-
-
-
 import React, { Component } from "react";
 import { Formik } from "formik";
-import withStyles from "@material-ui/core/styles/withStyles";
-import { Form } from "./form";
-import * as Yup from 'yup'
+import { DesktopForm } from "./DesktopForm";
+import { MobileForm } from "./MobileForm";
+import * as Yup from "yup"
 
 
-const styles = theme => ({
-    paper: {
-        marginTop: theme.spacing.unit * 8,
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        padding: `${theme.spacing.unit * 5}px ${theme.spacing.unit * 5}px ${theme
-            .spacing.unit * 5}px`
-    },
-    container: {
-        maxWidth: "200px"
-    }
-});
 
 const validationSchema = Yup.object({
 
     vehicleNumber: Yup.string()
-        .required("Dette feltet er påkrevd.")
-        .min(4, 'Registreringsnummeret er for kort')
-        .max(8, 'Registreringsnummeret er for langt'),
+        .required("Dette feltet er påkrevd")
+        .min(4, "Registreringsnummeret er for kort")
+        .max(8, "Registreringsnummeret er for langt"),
     email: Yup.string()
-        .email('Skriv inn en gyldig epostadresse')
+        .email("Skriv inn en gyldig epostadresse")
         .required("E-post er påkrevd."),
     socialSecurityNumber: Yup.string()
-        .min(11, 'Nummeret er for kort.')
-        .max(11, 'Nummeret er for langt.')
-        .required('Required'),
+        .min(11, "Nummeret er for kort")
+        .max(11, "Nummeret er for langt")
+        .required("Fødselsnummer er påkrevd"),
     firstName: Yup.string()
-        .required('Fornavn er påkrevd.'),
+        .required("Fornavn er påkrevd"),
     lastName: Yup.string()
-        .required('Etternavn er påkrevd.')
+        .required("Etternavn er påkrevd")
 });
 
 
@@ -52,13 +34,15 @@ class Agreement extends Component {
 
     render() {
         const initialValues = {
-            vehicleNumber: "123",
-            firstName: 'F',
-            lastName: 'Lastname test',
-            socialSecurityNumber: '123',
-            bonus: '30',
-            email: 'email@test.com'
+            vehicleNumber: "",
+            firstName: "",
+            lastName: "",
+            socialSecurityNumber: "",
+            bonus: "",
+            email: ""
         };
+
+        const isMobile = this._isMobile();
 
         return (
             <React.Fragment>
@@ -71,15 +55,30 @@ class Agreement extends Component {
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
                         </div>
                     </div>
-                    <Formik
-                        render={props => <Form {...props} />}
-                        initialValues={initialValues}
-                        validationSchema={validationSchema}
-                    />
+
+                    { isMobile ?
+                            <Formik
+                            render={props => <MobileForm {...props} />}
+                            initialValues={initialValues}
+                            validationSchema={validationSchema}
+                            />
+                    :
+                            <Formik
+                            render={props => <DesktopForm {...props} />}
+                            initialValues={initialValues}
+                            validationSchema={validationSchema}
+                            />
+                    }
+
+
                 </div>
             </React.Fragment>
         );
     }
+
+    _isMobile = () => {
+        return window.matchMedia("(max-width: 960px)").matches;
+    };
 }
 
-export default withStyles(styles)(Agreement);
+export default (Agreement);

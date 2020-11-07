@@ -1,25 +1,13 @@
-import { makeStyles } from '@material-ui/core/styles';
 import React from "react";
-import FormControl from "@material-ui/core/FormControl";
-import { Formik, Field, ErrorMessage } from "formik";
+import { Field, ErrorMessage } from "formik";
 
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        '& > *': {
-            margin: theme.spacing(1),
-            width: '25ch',
-        },
-    },
-}));
 
 export default function Email(props) {
-    const classes = useStyles();
 
     return (
-        <div className='form-item'>
-            <div>
-                Epost
+        <div className="form-item">
+            <div className="form-item-header">
+                E-post
             </div>
             <Field
                 type="email"

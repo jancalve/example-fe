@@ -1,51 +1,34 @@
 import React from "react";
-import { makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export default function Bonus(props) {
-    const useStyles = makeStyles((theme) => ({
-        formControl: {
-            margin: theme.spacing(1),
-            minWidth: 120,
-        },
-        selectEmpty: {
-            marginTop: theme.spacing(2),
-        },
-    }));
-
-    const classes = useStyles();
 
     return (
-        <div className='form-item'>
-        <FormControl className={classes.formControl}>
-            <InputLabel shrink id="demo-simple-select-placeholder-label-label">
-                Din bonus
-            </InputLabel>
-            <Select
-                labelId="demo-simple-select-placeholder-label-label"
-                id="bonus"
+        <div className="form-item">
+            <div className="form-item-header">
+                Bonus <FontAwesomeIcon color="black" icon="exclamation-circle" />
+            </div>
+            <select
                 name="bonus"
                 value={props.bonus}
-                onChange={props.onChange}
-                displayEmpty
-                className={classes.selectEmpty}
+                onChange={props.handleChange}
+                style={{ display: "block" }}
             >
-                <MenuItem value="">
-                    <em>Velg din bonus</em>
-                </MenuItem>
-                <MenuItem value={30}>30%</MenuItem>
-                <MenuItem value={40}>40%</MenuItem>
-                <MenuItem value={50}>50%</MenuItem>
-                <MenuItem value={60}>60%</MenuItem>
-                <MenuItem value={70}>70%</MenuItem>
-                <MenuItem value={80}>80%</MenuItem>
-                <MenuItem value={90}>90%</MenuItem>
-                <MenuItem value={100}>100%</MenuItem>
-            </Select>
-        </FormControl>
+                <option value="" label="Velg din bonus" />
+                <option value="30" label="30%" />
+                <option value="40" label="40%" />
+                <option value="50" label="50%" />
+                <option value="60" label="60%" />
+                <option value="70" label="70%" />
+                <option value="80" label="80%" />
+                <option value="90" label="90%" />
+                <option value="100" label="100%" />
+            </select>
+            {props.errors.bonus && props.touched.bonus}
+            <div className="input-error">
+                {props.errors.bonus}
+
+            </div>
         </div>
     )
 

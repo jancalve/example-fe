@@ -1,31 +1,17 @@
 import React from "react";
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
-import { Formik, Field, ErrorMessage } from "formik";
+import { Field, ErrorMessage } from "formik";
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        '& > *': {
-            margin: theme.spacing(1),
-            width: '25ch',
-        },
-    },
-}));
 
 export default function VehicleNumber(props) {
-    const classes = useStyles();
-    debugger;
     return (
-        <div className='form-item'>
-            <div shrink id="demo-simple-select-placeholder-label-label">
+        <div className="form-item">
+            <div className="form-item-header">
                 Bilens registeringsnummer
             </div>
             <Field
                 id="vehicleNumber"
                name="vehicleNumber"
-               label="ABC 12345"
+                placeholder="AB 12345"
                onChange={props.onChange}
                value={props.value} />
              <div>

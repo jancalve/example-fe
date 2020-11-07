@@ -1,14 +1,13 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
 import VehicleNumber from "./input/VehicleNumber";
+
 import Bonus from "./input/Bonus";
 import SocialSecurityNumber from "./input/SocialSecurityNumber";
 import Text from "./input/Text";
 import Email from "./input/Email";
 import { createAgreement } from "../api/api.js";
-import {Formik} from "formik";
 
-export const Form = (props) => {
+export const MobileForm = (props) => {
     const {
         values: { vehicleNumber, bonus, socialSecurityNumber, firstName, lastName, email},
         errors,
@@ -26,25 +25,21 @@ export const Form = (props) => {
 
 
     return (
-
-
         <form onSubmit={(event) => {
             event.preventDefault();
             const data = new FormData(event.target);
 
-            createAgreement(data.get('firstName'),
-                data.get('lastName'),
-                data.get('email'),
-                data.get('bonus'),
-                data.get('socialSecurityNumber'),
-                data.get('vehicleNumber'))
+            createAgreement(data.get("firstName"),
+                data.get("lastName"),
+                data.get("email"),
+                data.get("bonus"),
+                data.get("socialSecurityNumber"),
+                data.get("vehicleNumber"))
                 .then((response) => {
-                    if (response.status === 200) {
-                     console.log('success');
-                    }
-                    else {
-                        console.log('failure');
-                    }
+                    alert("Avtale opprettet. Ditt avtalenummer er " + response.data.agreementId);
+                })
+                .catch(function (error) {
+                    alert("En feil oppstod da avtalen skulle opprettes");
                 })
             }}>
 
@@ -67,28 +62,34 @@ export const Form = (props) => {
                     onChange={change.bind(null, "socialSecurityNumber")}
                     value={socialSecurityNumber}/>
 
+
                 <Text onChange={change.bind(null, "firstName")}
                       touched={touched}
                       errors={errors}
-                      id={'firstName'}
+                      id={"firstName"}
                       value={firstName}
-                      fieldHeader={'Fornavn'} />
+                      fieldHeader={"Fornavn"} />
 
                 <Text onChange={change.bind(null, "lastName")}
                       touched={touched}
                       errors={errors}
-                      id={'lastName'}
+                      id={"lastName"}
                       value={lastName}
-                      fieldHeader={'Etternavn'}/>
+                      fieldHeader={"Etternavn"}/>
 
                 <Email onChange={change.bind(null, "email")}
                        touched={touched}
                        errors={errors}
                        value={email} />
 
-
-                <Button type="submit" disabled={!isValid} color={'primary'}>{'Beregn pris'}</Button>
-                <Button type="reset" color={'secondary'}>{'Avbryt'}</Button>
+                <div className="btn-container">
+                    <div>
+                        <button type="submit" className="btn-submit" disabled={!isValid}>Beregn pris</button>
+                    </div>
+                    <div>
+                         <button className="btn-reset" type="reset">Avbryt</button>
+                    </div>
+                </div>
             </div>
         </form>
 
