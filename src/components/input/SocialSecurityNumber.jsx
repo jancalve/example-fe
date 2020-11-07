@@ -8,7 +8,7 @@ export default function SocialSecurityNumber(props) {
             <div className="form-item-header">
                 Fødselsnummer
             </div>
-            <Field     className= "form-item-field"
+            <Field
                        id="socialSecurityNumber"
                        name="socialSecurityNumber"
                        onChange={props.onChange}
