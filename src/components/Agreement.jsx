@@ -28,10 +28,6 @@ const validationSchema = Yup.object({
 
 class Agreement extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const initialValues = {
             vehicleNumber: "",
@@ -48,7 +44,7 @@ class Agreement extends Component {
             <React.Fragment>
                 <div className="form-root">
                     <div className="form-header">
-                        <h1>Kjøp bilforsikring</h1>
+                        <h1 className="form-header-title">Kjøp bilforsikring</h1>
                         <div>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
