@@ -24,9 +24,31 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.error {
+  color: red;
 }
+
+.form-item {
+  flex-direction: row;
+}
+
+.form-content {
+  padding-left: 20px;
+}
+
+.form-root {
+  padding: 20px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.form-header {
+  color: #61dafb;
+  padding-left: 20px;
+  width: 300px;
+}
+
+
 
 @keyframes App-logo-spin {
   from {

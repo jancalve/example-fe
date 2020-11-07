@@ -1,19 +1,16 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import Header from "./header/Header";
 import VehicleNumber from "./input/VehicleNumber";
 import Bonus from "./input/Bonus";
 import SocialSecurityNumber from "./input/SocialSecurityNumber";
 import Text from "./input/Text";
 import Email from "./input/Email";
-import GenericButton from "./button/GenericButton";
 import { createAgreement } from "../api/api.js";
-import { Formik, Field, ErrorMessage } from "formik";
+import {Formik} from "formik";
 
 export const Form = (props) => {
     const {
-        values: { vehicleNumber, bonus, socialSecurityNumber, firstName, lastName, email, myTest },
+        values: { vehicleNumber, bonus, socialSecurityNumber, firstName, lastName, email},
         errors,
         touched,
         handleChange,
@@ -29,7 +26,7 @@ export const Form = (props) => {
 
 
     return (
-        <div>
+
 
         <form onSubmit={(event) => {
             event.preventDefault();
@@ -51,6 +48,7 @@ export const Form = (props) => {
                 })
             }}>
 
+            <div className="form-content">
 
                 <VehicleNumber
                     touched={touched}
@@ -88,22 +86,11 @@ export const Form = (props) => {
                        errors={errors}
                        value={email} />
 
-            <div>
-                <Field
-                    type="text"
-                    name="myTest"
-                    id="myTest"
-                    className={errors.myTest && touched.myTest ?
-                        "input-error" : null}
-                />
-                <ErrorMessage name="myTest" component="span" className="error" />
 
+                <Button type="submit" disabled={!isValid} color={'primary'}>{'Beregn pris'}</Button>
+                <Button type="reset" color={'secondary'}>{'Avbryt'}</Button>
             </div>
-
-
-                <GenericButton disabled={!isValid} text={'Beregn pris'} color={'primary'} />
-                <GenericButton text={'Avbryt'} color={'secondary'} />
         </form>
-        </div>
+
     );
 };

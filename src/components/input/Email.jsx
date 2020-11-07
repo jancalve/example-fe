@@ -1,6 +1,4 @@
 import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import InputLabel from "@material-ui/core/InputLabel";
 import React from "react";
 import FormControl from "@material-ui/core/FormControl";
 import { Formik, Field, ErrorMessage } from "formik";
@@ -19,19 +17,21 @@ export default function Email(props) {
     const classes = useStyles();
 
     return (
-        <FormControl>
+        <div className='form-item'>
             <div>
                 Epost
             </div>
             <Field
-                type="text"
+                type="email"
                 id="email"
                 name="email"
                 onChange={props.onChange}
                 value={props.value}
                 className={props.errors.email && props.touched.email ? "input-error" : null}
                 label=""/>
+                <div>
             <ErrorMessage name="email" component="span" className="error" />
-        </FormControl>
+                </div>
+        </div>
     );
 }

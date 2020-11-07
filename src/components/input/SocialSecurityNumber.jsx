@@ -1,8 +1,5 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
 import { Formik, Field, ErrorMessage } from "formik";
 
 
@@ -19,7 +16,7 @@ export default function SocialSecurityNumber(props) {
     const classes = useStyles();
 
     return (
-        <div>
+        <div className='form-item'>
             <div>
                 Fødselsnummer
             </div>
@@ -31,7 +28,9 @@ export default function SocialSecurityNumber(props) {
                        error={props.touched.socialSecurityNumber && Boolean(props.errors.socialSecurityNumber)}
                        className={props.errors.email && props.touched.email ? "input-error" : null}
                        label=""/>
-            <ErrorMessage name="socialSecurityNumber" component="span" className="error" />
+            <div>
+                <ErrorMessage name="socialSecurityNumber" component="span" className="error" />
+            </div>
         </div>
     );
 }

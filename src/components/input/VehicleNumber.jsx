@@ -18,7 +18,7 @@ export default function VehicleNumber(props) {
     const classes = useStyles();
     debugger;
     return (
-        <div>
+        <div className='form-item'>
             <div shrink id="demo-simple-select-placeholder-label-label">
                 Bilens registeringsnummer
             </div>
@@ -28,7 +28,9 @@ export default function VehicleNumber(props) {
                label="ABC 12345"
                onChange={props.onChange}
                value={props.value} />
+             <div>
             <ErrorMessage name="vehicleNumber" component="span" className="error" />
+             </div>
         </div>
     );
 }

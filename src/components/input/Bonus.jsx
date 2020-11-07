@@ -4,9 +4,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import TextField from "@material-ui/core/TextField";
-
-
 
 export default function Bonus(props) {
     const useStyles = makeStyles((theme) => ({
@@ -22,6 +19,7 @@ export default function Bonus(props) {
     const classes = useStyles();
 
     return (
+        <div className='form-item'>
         <FormControl className={classes.formControl}>
             <InputLabel shrink id="demo-simple-select-placeholder-label-label">
                 Din bonus
@@ -48,6 +46,7 @@ export default function Bonus(props) {
                 <MenuItem value={100}>100%</MenuItem>
             </Select>
         </FormControl>
+        </div>
     )
 
 }

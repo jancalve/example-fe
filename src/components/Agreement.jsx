@@ -14,7 +14,7 @@ const styles = theme => ({
     paper: {
         marginTop: theme.spacing.unit * 8,
         display: "flex",
-        flexDirection: "column",
+        flexDirection: "row",
         alignItems: "center",
         padding: `${theme.spacing.unit * 5}px ${theme.spacing.unit * 5}px ${theme
             .spacing.unit * 5}px`
@@ -26,30 +26,21 @@ const styles = theme => ({
 
 const validationSchema = Yup.object({
 
-    myTest: Yup.string()
-        .required("Vehicle number is required")
-        .min(1, 'Too Short!')
-        .max(2, 'Too Long!'),
     vehicleNumber: Yup.string()
-        .required("Vehicle number is required")
-        .min(1, 'Too Short!')
-        .max(2, 'Too Long!'),
+        .required("Dette feltet er påkrevd.")
+        .min(4, 'Registreringsnummeret er for kort')
+        .max(8, 'Registreringsnummeret er for langt'),
     email: Yup.string()
-        .min(2, 'Too Short!')
-        .max(4, 'Too Long!')
-        .required("Email is required"),
+        .email('Skriv inn en gyldig epostadresse')
+        .required("E-post er påkrevd."),
     socialSecurityNumber: Yup.string()
-        .min(2, 'Too Short!')
-        .max(4, 'Too Long!')
+        .min(11, 'Nummeret er for kort.')
+        .max(11, 'Nummeret er for langt.')
         .required('Required'),
     firstName: Yup.string()
-        .min(2, 'Too Short!')
-        .max(4, 'Too Long!')
-        .required('Required'),
+        .required('Fornavn er påkrevd.'),
     lastName: Yup.string()
-        .min(2, 'Too Short!')
-        .max(4, 'Too Long!')
-        .required('Required')
+        .required('Etternavn er påkrevd.')
 });
 
 
@@ -60,25 +51,32 @@ class Agreement extends Component {
     }
 
     render() {
-        const classes = this.props;
         const initialValues = {
             vehicleNumber: "123",
             firstName: 'F',
             lastName: 'Lastname test',
             socialSecurityNumber: '123',
             bonus: '30',
-            email: 'email@test.com',
-            myTest: 'Test'
+            email: 'email@test.com'
         };
 
         return (
             <React.Fragment>
-                        <Header/>
-                        <Formik
-                            render={props => <Form {...props} />}
-                            initialValues={initialValues}
-                            validationSchema={validationSchema}
-                        />
+                <div className="form-root">
+                    <div className="form-header">
+                        <h1>Kjøp bilforsikring</h1>
+                        <div>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
+                        </div>
+                    </div>
+                    <Formik
+                        render={props => <Form {...props} />}
+                        initialValues={initialValues}
+                        validationSchema={validationSchema}
+                    />
+                </div>
             </React.Fragment>
         );
     }
